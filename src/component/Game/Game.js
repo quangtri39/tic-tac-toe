@@ -20,6 +20,7 @@ export default function Game() {
 
   const currentSquares = state.history[state.stepNumber];
   const winner = calculateWinner(currentSquares);
+  const showClearButton = winner || state.history.length > 9;
 
   let status;
   if (winner) {
@@ -79,7 +80,7 @@ export default function Game() {
         <div className="status">{status}</div>
         <ol>{moves}</ol>
       </div>
-      {winner || state.history.length > 9 ? (
+      {showClearButton ? (
         <Button variant="primary" onClick={clearGame}>
           Clear Game
         </Button>
